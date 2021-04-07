@@ -28,10 +28,10 @@ func main() {
 	NewTon := NewNewTon(6, []float64{0, 1, 2, 3, 4, 5}, []float64{f(0), f(1), f(2), f(3), f(4), f(5)})
 	var Koefs []float64
 	for i := 0; i < n; i++ {
-		Koefs = append(Koefs, NewTon.swapRazryad(i))
+		Koefs = append(Koefs, NewTon.uzelCalculate(i))
 	}
 
-	for i := -1.0; i < 6; i += 0.1 {
+	for i := 0.0; i < 5; i += 0.1 {
 		axX = append(axX, i)
 		axY = append(axY, NewTon.CalcInPoint(Koefs, i))
 	}
@@ -52,7 +52,7 @@ func (f *NewTon) CalcInPoint(koefs []float64, x float64) float64 {
 	return point
 }
 
-func (f *NewTon) swapRazryad(iter int) float64 {
+func (f *NewTon) uzelCalculate(iter int) float64 {
 	if iter == 0 {
 		return f.funcs[0]
 	}
