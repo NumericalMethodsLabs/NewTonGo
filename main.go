@@ -10,14 +10,14 @@ func f(x float64) float64 {
 	return math.Sin(x)
 }
 
-type Func struct {
+type NewTon struct {
 	n     int
 	uzly  []float64
 	funcs []float64
 }
 
-func NewFunc(n int, uzly []float64, funcs []float64) *Func {
-	return &Func{n: n, uzly: uzly, funcs: funcs}
+func NewNewTon(n int, uzly []float64, funcs []float64) *NewTon {
+	return &NewTon{n: n, uzly: uzly, funcs: funcs}
 }
 
 var n int = 6
@@ -25,22 +25,22 @@ var axX []float64
 var axY []float64
 
 func main() {
-	Func := NewFunc(6, []float64{0, 1, 2, 3, 4, 5}, []float64{f(0), f(1), f(2), f(3), f(4), f(5)})
+	NewTon := NewNewTon(6, []float64{0, 1, 2, 3, 4, 5}, []float64{f(0), f(1), f(2), f(3), f(4), f(5)})
 	var Koefs []float64
 	for i := 0; i < n; i++ {
-		Koefs = append(Koefs, Func.swapRazryad(i))
+		Koefs = append(Koefs, NewTon.swapRazryad(i))
 	}
 
 	for i := -1.0; i < 6; i += 0.1 {
 		axX = append(axX, i)
-		axY = append(axY, Func.CalcInPoint(Koefs, i))
+		axY = append(axY, NewTon.CalcInPoint(Koefs, i))
 	}
 
 	http.HandleFunc("/", drawChart)
 	http.ListenAndServe(":8080", nil)
 }
 
-func (f *Func) CalcInPoint(koefs []float64, x float64) float64 {
+func (f *NewTon) CalcInPoint(koefs []float64, x float64) float64 {
 	point := 0.0
 	for i, val := range koefs {
 		kef := val
@@ -52,7 +52,7 @@ func (f *Func) CalcInPoint(koefs []float64, x float64) float64 {
 	return point
 }
 
-func (f *Func) swapRazryad(iter int) float64 {
+func (f *NewTon) swapRazryad(iter int) float64 {
 	if iter == 0 {
 		return f.funcs[0]
 	}
